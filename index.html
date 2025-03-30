@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Code</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div>
+      <div class="heading">
+        <h1>QR Code Generator</h1>
+      </div>
+      <div class="options">
+        <button onclick="showForm('text')">Text</button>
+        <button onclick="showForm('email')">E-Mail</button>
+        <button onclick="showForm('link')">Link</button>
+        <button onclick="showForm('call')">Call</button>
+        <button onclick="showForm('sms')">SMS</button>
+        <button onclick="showForm('whatsapp')">WhatsApp</button>
+        <button onclick="showForm('wifi')">Wi-Fi</button>
+        <button onclick="showForm('event')">Event</button>
+        <button onclick="showForm('social')">Social Media</button>
+      </div>
+      <div class="form-container">
+        <form id="link" class="qr-form" style="display: none">
+          <label for="link-url">URL:</label>
+          <input
+            type="text"
+            id="link-url"
+            placeholder="https://www.example.com"
+            required
+          />
+        </form>
+
+        <form id="email" class="qr-form" style="display: none">
+          <label for="E-Mail">E-Mail:</label>
+          <input
+            type="text"
+            id="E-Mail"
+            placeholder="example@example.com"
+            required
+          />
+          <label for="Email-Subject">Subject:</label>
+          <input
+            type="text"
+            id="Email-Subject"
+            placeholder="Enter Subject"
+            required
+          />
+          <label for="Email-Message">Message:</label>
+          <textarea
+            type="text"
+            id="EmailMessage"
+            placeholder="Enter Message"
+            required
+          ></textarea>
+        </form>
+
+        <form id="wifi" class="qr-form" style="display: none">
+          <label for="Wifi ">WiFi-SSID:</label>
+          <input type="text" id="Wifi" placeholder="Enter WiFi-SSID" required />
+          <label for="wifipassword">Wi-Fi Password:</label>
+          <input
+            type="text"
+            id="Wifi"
+            placeholder="Enter Wi-Fi Password:"
+            required
+          />
+        </form>
+
+        <form id="call" class="qr-form" style="display: none">
+          <label for="call-url">Phone Number:</label>
+          <input type="tel" id="call-url" placeholder="+1234567890" required />
+        </form>
+
+        <form id="event" class="qr-form" style="display: none">
+          <label for="event">Event Title(Name):</label>
+          <input
+            type="text"
+            id="event"
+            placeholder="Enter your Event name"
+            required
+          />
+          <label for="Start">Start Date:</label>
+          <input type="date" id="Start" placeholder="mm / dd / yyyy" required />
+          <label for="end">End Date:</label>
+          <input type="date" id="end" placeholder="mm / dd / yyyy" required />
+          <label for="Location">Location</label>
+          <input
+            type="text"
+            id="Location"
+            placeholder="Enter Your Event Location"
+            required
+          />
+        </form>
+
+        <form id="text" class="qr-form" style="display: none">
+          <label for="text-url">Enter Your Message:</label>
+          <textarea
+            type="text"
+            name="link-url"
+            placeholder="Enter message"
+            required
+          ></textarea>
+        </form>
+
+        <form id="sms" class="qr-form" style="display: none">
+          <label for="sms-number">Phone Number:</label>
+          <input
+            type="tel"
+            id="sms-number"
+            placeholder="+1234567890"
+            required
+          />
+          <label for="smsmessage">Message:</label>
+          <textarea
+            type="text"
+            id="smsmessage"
+            placeholder="Enter Message"
+            required
+          ></textarea>
+        </form>
+
+        <form id="whatsapp" class="qr-form" style="display: none">
+          <label for="whatsappnumber">Phone Number:</label>
+          <input
+            type="tel"
+            id="whatsappnumber"
+            placeholder="+1234567890"
+            required
+          />
+          <label for="whatsappmessage">Message:</label>
+          <textarea
+            type="text"
+            id="whatsappmessage"
+            placeholder="Enter Message"
+            required
+          ></textarea>
+        </form>
+
+        <form id="social" class="qr-form" style="display: none">
+          <label for="socialurl">Enter URL:</label>
+          <input type="url" id="socialurl" placeholder="Enter URL" required />
+        </form>
+      </div>
+      <div class="color-picker">
+        <label for="qr-color">QR Code Color:</label>
+        <input type="color" id="qr-color" name="qr-color" value="#024534" onchange="updateHex('qr-color', 'qr-hex')">
+        <input type="text" id="qr-hex" value="#024534" readonly>
+    </div>
+    
+    <div class="color-picker">
+        <label for="bg-color">Background Color:</label>
+        <input type="color" id="bg-color" name="bg-color" value="#e6ce2d" onchange="updateHex('bg-color', 'bg-hex')">
+        <input type="text" id="bg-hex" value="#e6ce2d" readonly>
+    </div>
+    
+    <div class="btn-container">
+        <button style="background-color: purple; color: white;" onclick="generatorQRCode()" >Generate QR Code</button>
+        <button style="background-color: purple; color: white;" onclick="clearForm()"> Clear</button>
+    </div>
+    <div id="qr-code"></div>
+    <div class="qr-output">
+        <button style="background-color: purple; color: white;" onclick="downloadQRCode()">Download QR Code</button>
+    </div>
+
+    
+
+    
+    </div>
+  </body>
+</html>
